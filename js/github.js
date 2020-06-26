@@ -1,7 +1,9 @@
+import { client_id, client_secret } from '../config/config.js';
+
 class Github {
   constructor() {
-    this.client_id = '720279470ac7f2516f05';
-    this.client_secret = '39cca77effa96925d87d37fb6f0525a0c0b9db59';
+    this.client_id = client_id;
+    this.client_secret = client_secret;
   }
 
   async getUserProfile(user) {
