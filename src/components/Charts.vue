@@ -60,6 +60,7 @@ const Chart = styled.div`
   box-shadow: #00000033 0px 5px 30px -15px;
   padding: 2rem;
   border-radius: 5px;
+  font-size: 1.1rem;
 `;
 
 const ChartHeader = styled.h2`

@@ -24,6 +24,10 @@ const FooterWrapper = styled.footer`
     font-weight: 500;
     color: #4c69fa;
   }
+
+  @media (max-width: 800px) {
+    padding: 1.3rem;
+  }
 `;
 
 export default {

@@ -11,7 +11,7 @@
       <Bio v-if="user.bio">{{ user.bio }}</Bio>
       <Date>
         <i class="fa fa-calendar"></i>
-        <p>Joined {{ formatDate(user.created_at) }}</p>
+        <p>Joined {{ user.created_at | formatDate }}</p>
       </Date>
       <ProfileGrid>
         <GridItem>
@@ -37,10 +37,10 @@ import moment from "moment";
 
 const HeaderWrapper = styled.section`
   background: #1a1e22;
-  padding: 3rem 5rem 10rem;
+  padding: 3.5rem 5rem 9rem;
 
   @media (max-width: 800px) {
-    padding: 3rem 2rem 6.4rem;
+    padding: 3rem 1.9rem 6.4rem;
   }
 `;
 
@@ -51,6 +51,10 @@ const HeaderInfo = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  @media (max-width: 800px) {
+    font-size: 95%;
+  }
 `;
 
 const ImageArea = styled.div`
@@ -63,7 +67,7 @@ const ImageArea = styled.div`
   border-radius: 50%;
 
   @media (max-width: 600px) {
-    width: 140px;
+    width: 135px;
   }
 `;
 
@@ -85,14 +89,14 @@ const UserImage = styled.img`
 const UserName = styled.a`
   text-decoration: none;
   font-family: "Fira Code", monospace;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: 400;
   margin-bottom: 1.8rem;
   color: #4c69fa;
 `;
 
 const Bio = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.2em;
   max-width: 45rem;
   color: #eef5ff;
   font-weight: 400;
@@ -107,7 +111,7 @@ const Date = styled.div`
   margin: 0px 1rem 0.5rem;
   color: #c8e1ff;
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1.1em;
 
   & i {
     margin-right: 10px;
@@ -131,17 +135,17 @@ const GridItem = styled.div`
   background: #24292e;
   text-align: center;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 1em;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   & span {
     color: #f8f8f8;
-    font-size: 1.5rem;
+    font-size: 1.4em;
   }
 
   & p {
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.75em;
     letter-spacing: 1px;
     font-weight: 400;
     font-family: "Montserrat", sans-serif;
@@ -165,19 +169,14 @@ export default {
     ProfileGrid,
     GridItem
   },
-  methods: {
+  filters: {
     formatDate(date) {
       return moment(date).format("MMM D, YYYY");
     }
   },
-  props: ["user"]
+  props: ["user"],
+  created() {
+    console.log(this.user);
+  }
 };
 </script>
-
-<style>
-@media (max-width: 1000px) {
-  * {
-    font-size: 94%;
-  }
-}
-</style>

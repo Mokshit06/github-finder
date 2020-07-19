@@ -9,7 +9,7 @@
         <i class="fa fa-bookmark"></i>
         <h3>{{ repo.name }}</h3>
       </RepoName>
-      <RepoDesc v-if="repo.description" v-html="parseEmoji(repo.description)" />
+      <RepoDesc v-if="repo.description" v-html="parseEmoji" />
     </div>
     <RepoStats>
       <RepoStatsLeft>
@@ -43,7 +43,7 @@ const RepoItemWrapper = styled.a`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1.6em 2em;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   height: 100%;
   color: #586069;
@@ -51,16 +51,21 @@ const RepoItemWrapper = styled.a`
   border-radius: 0.25rem;
   box-shadow: #0003 0px 10px 30px -15px;
   transition: 200ms ease-in-out;
+  font-size: 95%;
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 20px -15px;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 93%;
   }
 `;
 
 const RepoName = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8em;
 
   & i {
     display: inline-block;
@@ -74,7 +79,7 @@ const RepoName = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 1.25rem;
+    font-size: 1.25em;
     font-weight: 500;
     color: #24292e;
     margin: 0;
@@ -83,8 +88,8 @@ const RepoName = styled.div`
 
 const RepoDesc = styled.p`
   color: #586069;
-  font-size: 15px;
-  margin-bottom: 2rem;
+  font-size: 1em;
+  margin-bottom: 1.8em;
 `;
 
 const RepoStats = styled.div`
@@ -121,9 +126,9 @@ const Language = styled("div", ["language"])`
 export default {
   name: "RepoItem",
   props: ["repo"],
-  methods: {
-    parseEmoji(desc) {
-      return uEmojiParse.parse(desc);
+  computed: {
+    parseEmoji() {
+      return uEmojiParse.parse(this.repo.description);
     }
   },
   components: {
