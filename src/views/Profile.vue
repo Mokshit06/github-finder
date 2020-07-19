@@ -1,14 +1,17 @@
 <template>
   <div>
-    <Header :user="user" />
-    <Charts
-      :lang="chartRepos[0]"
-      :starred="chartRepos[1]"
-      :stars="chartRepos[2]"
-      v-if="loaded"
-    />
-    <Repositories :repositories="topRepos" />
-    <Footer />
+    <Loading v-if="!loaded" />
+    <div v-else-if="!error">
+      <Header :user="user" />
+      <Charts
+        :lang="chartRepos[0]"
+        :starred="chartRepos[1]"
+        :stars="chartRepos[2]"
+      />
+      <Repositories :repositories="topRepos" />
+      <Footer />
+    </div>
+    <NotFound v-else error="User"></NotFound>
   </div>
 </template>
 
@@ -17,6 +20,8 @@ import Header from "@/components/Header";
 import Charts from "@/components/Charts";
 import Repositories from "@/components/Repositories";
 import Footer from "@/components/Footer";
+import Loading from "@/components/Loading";
+import NotFound from "./NotFound";
 import { getFrequency, getStars } from "../utils/functions";
 
 export default {
@@ -25,7 +30,9 @@ export default {
     Header,
     Repositories,
     Charts,
-    Footer
+    Footer,
+    NotFound,
+    Loading
   },
   data() {
     return {
@@ -33,7 +40,8 @@ export default {
       repos: [],
       topRepos: [],
       chartRepos: [],
-      loaded: false
+      loaded: false,
+      error: false
     };
   },
   methods: {
@@ -142,14 +150,14 @@ export default {
     }
   },
   async created() {
-    this.loaded = false;
     const username = this.$route.params.username;
     try {
       await this.fetchUser(username);
       await this.fetchRepos(username);
       this.loaded = true;
     } catch (error) {
-      console.error(error);
+      this.error = true;
+      this.loaded = true;
     }
     this.topRepos = [...this.repos]
       .filter(repo => repo.fork !== true)

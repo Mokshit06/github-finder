@@ -11,6 +11,7 @@
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "moment": "^2.27.0",
+    "universal-emoji-parser": "^0.5.22",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.0",
     "vue-router": "^3.2.0",

@@ -1,12 +1,10 @@
 <template>
   <NotFoundWrapper>
     <NotFound>
-      <Icon>
-        <i class="fa fa-github"></i>
-      </Icon>
+      <Icon />
       <Title>Github Finder</Title>
       <ErrorText
-        >User not found! Please try searching something else.</ErrorText
+        >{{ error }} not found! Please try searching something else.</ErrorText
       >
       <router-link to="/">Go Home</router-link>
     </NotFound>
@@ -15,6 +13,7 @@
 
 <script>
 import styled from "vue-styled-components";
+import Icon from "@/components/Icon.vue";
 
 const NotFoundWrapper = styled.div`
   background: linear-gradient(#1a1e22 0%, #24292e 100%);
@@ -41,11 +40,6 @@ const NotFound = styled.div`
   }
 `;
 
-const Icon = styled.i`
-  font-size: 5rem;
-  color: #4c69fa;
-`;
-
 const Title = styled.h2`
   margin: 1.5rem;
   font-size: 2.5rem;
@@ -61,6 +55,8 @@ const ErrorText = styled.p`
 `;
 
 export default {
+  name: "Error",
+  props: ["error"],
   components: {
     NotFoundWrapper,
     NotFound,

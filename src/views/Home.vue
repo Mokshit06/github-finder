@@ -1,9 +1,7 @@
 <template>
   <FormWrapper>
     <Form @submit.prevent="submitForm">
-      <Icon>
-        <i class="fa fa-github"></i>
-      </Icon>
+      <Icon />
       <Heading>Github Finder</Heading>
       <label for="input">Find your Github Profile</label>
       <input type="text" v-model="username" />
@@ -13,6 +11,7 @@
 
 <script>
 import styled from "vue-styled-components";
+import Icon from "@/components/Icon.vue";
 
 const FormWrapper = styled.div`
   display: -webkit-box;
@@ -30,11 +29,15 @@ const FormWrapper = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-size: 2.4rem;
+  font-size: 2.7rem;
   font-weight: 500;
   color: #f8f8f8;
   margin: 1rem 2rem 1rem;
   display: block;
+
+  @media (max-width: 640px) {
+    font-size: 2.1rem;
+  }
 `;
 
 const Form = styled.form`
@@ -54,21 +57,26 @@ const Form = styled.form`
     border: none;
     outline: 0px;
     padding: 1.2rem;
-    font-size: 1.8rem;
+    font-size: 1.65rem;
+
+    @media (max-width: 640px) {
+      width: 85%;
+      padding: 0.9rem;
+      font-size: 1.5rem;
+    }
   }
 
   & label {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: #e6f2ff;
     margin: 0 1.5rem 1.5rem;
     display: block;
-  }
-`;
 
-const Icon = styled.i`
-  font-size: 5rem;
-  color: #4c69fa;
+    @media (max-width: 640px) {
+      font-size: 1.17rem;
+    }
+  }
 `;
 
 export default {
@@ -80,12 +88,12 @@ export default {
   components: {
     FormWrapper,
     Form,
-    Icon,
-    Heading
+    Heading,
+    Icon
   },
   methods: {
     submitForm() {
-      this.$router.push({ path: `/user/${this.username.toLowerCase()}` });
+      this.$router.push({ path: `/${this.username.toLowerCase()}` });
     }
   }
 };

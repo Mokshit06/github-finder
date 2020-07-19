@@ -11,14 +11,17 @@ const routes = [
     component: Home,
   },
   {
-    path: '/user/:username',
-    name: 'About',
+    path: '/:username',
+    name: 'Profile',
     component: () => import('../views/Profile.vue'),
   },
   {
     path: '/*',
     name: '404',
     component: () => import('../views/NotFound.vue'),
+    props: {
+      error: 'Page',
+    },
   },
 ];
 

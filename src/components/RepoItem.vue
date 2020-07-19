@@ -9,9 +9,7 @@
         <i class="fa fa-bookmark"></i>
         <h3>{{ repo.name }}</h3>
       </RepoName>
-      <RepoDesc v-if="repo.description">
-        {{ repo.description }}
-      </RepoDesc>
+      <RepoDesc v-if="repo.description" v-html="parseEmoji(repo.description)" />
     </div>
     <RepoStats>
       <RepoStatsLeft>
@@ -37,6 +35,7 @@
 
 <script>
 import styled from "vue-styled-components";
+import uEmojiParse from "universal-emoji-parser";
 import colors from "../utils/colors";
 
 const RepoItemWrapper = styled.a`
@@ -122,6 +121,11 @@ const Language = styled("div", ["language"])`
 export default {
   name: "RepoItem",
   props: ["repo"],
+  methods: {
+    parseEmoji(desc) {
+      return uEmojiParse.parse(desc);
+    }
+  },
   components: {
     RepoItemWrapper,
     RepoName,
@@ -134,4 +138,7 @@ export default {
 </script>
 
 <style>
+.emoji {
+  height: 1em;
+}
 </style>
