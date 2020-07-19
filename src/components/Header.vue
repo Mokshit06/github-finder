@@ -38,6 +38,10 @@ import moment from "moment";
 const HeaderWrapper = styled.section`
   background: #1a1e22;
   padding: 3rem 5rem 10rem;
+
+  @media (max-width: 800px) {
+    padding: 3rem 2rem 6.4rem;
+  }
 `;
 
 const HeaderInfo = styled.div`
@@ -54,10 +58,13 @@ const ImageArea = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
-  width: 150px;
-  height: 150px;
+  width: 160px;
   border: 0.5rem solid #4c69fa;
   border-radius: 50%;
+
+  @media (max-width: 600px) {
+    width: 140px;
+  }
 `;
 
 const User = styled.h1`
@@ -86,8 +93,7 @@ const UserName = styled.a`
 
 const Bio = styled.p`
   font-size: 1.2rem;
-  word-wrap: break-word;
-  width: 45rem;
+  max-width: 45rem;
   color: #eef5ff;
   font-weight: 400;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -124,7 +130,7 @@ const GridItem = styled.div`
   align-items: center;
   background: #24292e;
   text-align: center;
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
@@ -169,4 +175,9 @@ export default {
 </script>
 
 <style>
+@media (max-width: 1000px) {
+  * {
+    font-size: 94%;
+  }
+}
 </style>

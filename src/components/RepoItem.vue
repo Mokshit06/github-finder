@@ -64,9 +64,9 @@ const RepoName = styled.div`
 
   & i {
     display: inline-block;
-    color: #3c434b;
-    margin-right: 0.5rem;
-    min-width: 1rem;
+    color: #414952;
+    margin-right: 0.9rem;
+    font-size: 1rem;
   }
 
   & h3 {

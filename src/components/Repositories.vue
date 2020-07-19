@@ -16,6 +16,10 @@ import RepoItem from "./RepoItem";
 const RepoWrapper = styled.section`
   padding: 3rem 5rem;
   background: #f6f8fa;
+
+  @media (max-width: 800px) {
+    padding: 3rem 2.2rem;
+  }
 `;
 
 const RepoHeader = styled.h2`

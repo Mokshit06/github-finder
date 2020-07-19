@@ -38,6 +38,10 @@ import colors from "../utils/colors";
 const InfoWrapper = styled.section`
   padding: 3rem 5rem;
   background: #f6f8fa;
+
+  @media (max-width: 800px) {
+    padding: 3rem 2.2rem;
+  }
 `;
 
 const InfoArea = styled.div`
