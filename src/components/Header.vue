@@ -174,9 +174,6 @@ export default {
       return moment(date).format("MMM D, YYYY");
     }
   },
-  props: ["user"],
-  created() {
-    console.log(this.user);
-  }
+  props: ["user"]
 };
 </script>

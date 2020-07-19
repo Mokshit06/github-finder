@@ -37,6 +37,11 @@ const NotFound = styled.div`
     color: #f8f8f8;
     font-size: 1rem;
     display: inline-block;
+    transition: 200ms ease-in-out;
+
+    &:hover {
+      box-shadow: #223387 0px 2px 12px 0px;
+    }
   }
 `;
 
@@ -63,6 +68,9 @@ export default {
     Icon,
     Title,
     ErrorText
+  },
+  metaInfo: {
+    title: "404"
   }
 };
 </script>

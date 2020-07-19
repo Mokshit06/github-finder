@@ -95,6 +95,9 @@ export default {
     submitForm() {
       this.$router.push({ path: `/${this.username.toLowerCase()}` });
     }
+  },
+  metaInfo: {
+    title: "Home"
   }
 };
 </script>

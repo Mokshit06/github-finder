@@ -77,6 +77,9 @@ export default {
       } catch (error) {
         throw new Error("Something went wrong");
       }
+    },
+    letterCase(str) {
+      return str[0].toUpperCase() + str.slice(1).toLowerCase();
     }
   },
 
@@ -91,10 +94,23 @@ export default {
       await this.fetchUser(this.$route.params.username);
       this.loading = false;
     } catch (error) {
-      console.error(error);
       this.error = true;
       this.loading = false;
     }
+  },
+
+  metaInfo() {
+    return {
+      title: this.letterCase(this.$route.params.username),
+      meta: [
+        {
+          name: "description",
+          content: `${this.letterCase(this.$route.params.username)},${
+            this.$route.params.username
+          }, Github Finder, Mokshit Jain, Mokshit Jain Github Finder`
+        }
+      ]
+    };
   }
 };
 </script>
