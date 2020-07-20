@@ -10,7 +10,7 @@
       >
       <Bio v-if="user.bio">{{ user.bio }}</Bio>
       <Date>
-        <i class="fa fa-calendar"></i>
+        <font-awesome-icon :icon="calenderIcon" />
         <p>Joined {{ user.created_at | formatDate }}</p>
       </Date>
       <ProfileGrid>
@@ -34,6 +34,8 @@
 <script>
 import styled from "vue-styled-components";
 import moment from "moment";
+import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const HeaderWrapper = styled.section`
   background: #1a1e22;
@@ -113,9 +115,8 @@ const Date = styled.div`
   font-weight: 400;
   font-size: 1.1em;
 
-  & i {
+  & svg {
     margin-right: 10px;
-    font-size: 0.9rem;
   }
 `;
 
@@ -167,7 +168,13 @@ export default {
     Bio,
     Date,
     ProfileGrid,
-    GridItem
+    GridItem,
+    FontAwesomeIcon
+  },
+  computed: {
+    calenderIcon() {
+      return faCalendarAlt;
+    }
   },
   filters: {
     formatDate(date) {

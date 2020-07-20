@@ -36,7 +36,7 @@ const RepoHeader = styled.h2`
 
 const RepoGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 1rem;
   list-style: none;
 `;

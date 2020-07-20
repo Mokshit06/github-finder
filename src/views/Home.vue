@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     submitForm() {
-      this.$router.push({ path: `/${this.username.toLowerCase()}` });
+      this.$router.push({ path: `/${this.username.trim().toLowerCase()}` });
     }
   },
   metaInfo: {

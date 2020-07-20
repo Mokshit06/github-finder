@@ -1,11 +1,44 @@
 <template>
-  <IconWrapper :size="size" class="fa fa-github" :animation="animation" />
+  <font-awesome-icon
+    :icon="githubIcon"
+    :size="size"
+    :class="{ animated: animation }"
+  />
 </template>
 
 <script>
-import styled, { keyframes } from "vue-styled-components";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-const IconAnimation = keyframes`
+export default {
+  name: "Icon",
+  props: ["big", "animation"],
+  data() {
+    return {
+      size: this.big ? "7x" : "4x"
+    };
+  },
+  computed: {
+    githubIcon() {
+      return faGithub;
+    }
+  },
+  components: {
+    FontAwesomeIcon
+  }
+};
+</script>
+
+<style scoped>
+svg {
+  color: #4c69fa;
+}
+
+.animated {
+  animation: breathe 1.5s infinite normal;
+}
+
+@keyframes breathe {
   0% {
     transform: scale(0.9);
   }
@@ -17,27 +50,6 @@ const IconAnimation = keyframes`
   100% {
     transform: scale(0.9);
   }
-`;
-
-const IconWrapper = styled("i", ["size", "animation"])`
-  font-size: ${props => (props.size ? props.size : 5)}rem;
-  color: #4c69fa;
-  animation: ${props =>
-    props.animation ? `${IconAnimation} 1.5s infinite normal` : "none"};
-  @media (max-width: 640px) {
-    font-size: ${props => (props.size ? parseInt(props.size) - 0.9 : 5)}rem;
-  }
-`;
-
-export default {
-  name: "Icon",
-  props: ["size", "animation"],
-  components: {
-    IconWrapper
-  }
-};
-</script>
-
-<style>
+}
 </style>
 

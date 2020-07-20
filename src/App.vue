@@ -16,7 +16,6 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Montserrat:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap");
-@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 #app,
 * {
@@ -27,6 +26,10 @@ export default {
 
 body {
   font-family: "Montserrat", sans-serif;
+}
+
+svg {
+  font-size: 0.7em;
 }
 
 ::-webkit-scrollbar {

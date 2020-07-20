@@ -6,7 +6,7 @@
   >
     <div>
       <RepoName>
-        <i class="fa fa-bookmark"></i>
+        <font-awesome-icon :icon="repoIcon" />
         <h3>{{ repo.name }}</h3>
       </RepoName>
       <RepoDesc v-if="repo.description" v-html="parseEmoji" />
@@ -18,11 +18,11 @@
           {{ repo.language }}</span
         >
         <span>
-          <i class="fa fa-star"></i>
+          <font-awesome-icon :icon="starIcon" />
           {{ repo.watchers_count }}
         </span>
         <span>
-          <i class="fa fa-code-fork"></i>
+          <font-awesome-icon :icon="branchIcon" />
           {{ repo.forks }}
         </span>
       </RepoStatsLeft>
@@ -37,6 +37,12 @@
 import styled from "vue-styled-components";
 import uEmojiParse from "universal-emoji-parser";
 import colors from "../utils/colors";
+import {
+  faCodeBranch,
+  faBookmark,
+  faStar
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const RepoItemWrapper = styled.a`
   text-decoration: none;
@@ -67,11 +73,9 @@ const RepoName = styled.div`
   align-items: center;
   margin-bottom: 0.8em;
 
-  & i {
-    display: inline-block;
+  & svg {
     color: #414952;
     margin-right: 0.9rem;
-    font-size: 1rem;
   }
 
   & h3 {
@@ -108,7 +112,7 @@ const RepoStatsLeft = styled.div`
     align-items: center;
     margin-right: 0.75rem;
 
-    & i {
+    & svg {
       margin-right: 0.25rem;
     }
   }
@@ -129,6 +133,15 @@ export default {
   computed: {
     parseEmoji() {
       return uEmojiParse.parse(this.repo.description);
+    },
+    branchIcon() {
+      return faCodeBranch;
+    },
+    starIcon() {
+      return faStar;
+    },
+    repoIcon() {
+      return faBookmark;
     }
   },
   components: {
@@ -137,7 +150,8 @@ export default {
     RepoDesc,
     RepoStats,
     RepoStatsLeft,
-    Language
+    Language,
+    FontAwesomeIcon
   }
 };
 </script>

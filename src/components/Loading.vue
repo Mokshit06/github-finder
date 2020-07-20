@@ -1,6 +1,6 @@
 <template>
   <LoadingWrapper>
-    <Icon :size="10" :animation="true" />
+    <Icon :big="true" :animation="true" />
   </LoadingWrapper>
 </template>
 
