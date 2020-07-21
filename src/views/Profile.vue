@@ -31,15 +31,20 @@ export default {
   methods: {
     async fetchUser(user) {
       const urls = [
-        `https://api.github.com/users/${user}?client_id=${process.env.VUE_APP_API_KEY}&client_secret=${process.env.VUE_APP_API_SECRET}`,
-        `https://api.github.com/users/${user}/repos?per_page=100&page=1&client_id=${process.env.VUE_APP_API_KEY}&client_secret=${process.env.VUE_APP_API_SECRET}`,
-        `https://api.github.com/users/${user}/repos?per_page=100&page=2&client_id=${process.env.VUE_APP_API_KEY}&client_secret=${process.env.VUE_APP_API_SECRET}`,
-        `https://api.github.com/users/${user}/repos?per_page=100&page=3&client_id=${process.env.VUE_APP_API_KEY}&client_secret=${process.env.VUE_APP_API_SECRET}`
+        `https://api.github.com/users/${user}`,
+        `https://api.github.com/users/${user}/repos?per_page=100&page=1`,
+        `https://api.github.com/users/${user}/repos?per_page=100&page=2`,
+        `https://api.github.com/users/${user}/repos?per_page=100&page=3`
       ];
 
       try {
         let [userData, ...repoArr] = await Promise.all(
-          urls.map(url => axios.get(url))
+          urls.map(url => axios.get(url, {
+            auth: {
+              username: process.env.VUE_APP_API_KEY,
+              password: process.env.VUE_APP_API_SECRET
+            }
+          }))
         );
 
         const {
